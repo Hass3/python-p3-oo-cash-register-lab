@@ -20,10 +20,10 @@ class CashRegister:
             self.total -= discounted_amount
             print(f"After the discount, the total comes to ${int(self.total)}.")
     def void_last_transaction(self):
-        last_transiction_list = list(self.last_transaction)  
-        self.total -= last_transiction_list[1]
-        if self.total - last_transiction_list[1]:
-            return self.total
-        else: 
-            self.total = 0
-            return self.total
+        if self.last_transaction != None:
+            title,price, quantity = self.last_transaction
+            self.total -= price *quantity
+            for _ in range(quantity):
+                self.items.remove(title)
+            self.last_transaction = None
+                
